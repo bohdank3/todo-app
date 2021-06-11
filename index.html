@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <meta charset="UTF-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>TODO App</title>
+
+        <link rel="shortcut icon" href="./assets/images/favicon.png">
+
+		<link rel="stylesheet" href="./assets/css/bootstrap.css">
+
+        <link rel="stylesheet" href="./assets/css/font-awesome.css">
+
+        <link rel="stylesheet" href="./assets/css/style.css">
+				
+				<script defer src="https://unpkg.com/vue@next"></script>
+				<script defer src="./assets/js/app.js"></script>
+
+    </head>
+  <body>
+  
+	<div class="container my-5" id='app'>
+	
+		<h1>TODO App</h1>
+		
+		<hr>
+		
+		<div class="row">
+			<div class="col-10">
+				<input @keypress.enter="addTask" v-model='newTxt' type='text' class="form-control w-100" placeholder="What to do?">
+			</div>
+			<div class="col-2">
+				<button @click='addTask' class="btn btn-primary w-100">
+					<i class="fas fa-plus"></i>
+					ADD
+				</button>
+			</div>
+		</div>
+		
+		<hr>
+		
+		<div class="records">
+			
+			<h4 class="my-3 p-2" v-for='(item,i) in taskList'>
+				<span
+					 @click="item.complited = !item.complited"
+					 :class=
+					 				"{
+										 'text-muted':item.complited,
+										 'line-through':item.complited
+										}">#{{item.txt}}</span>
+				<i @click='deleteTask(i)' class="ml-3 far fa-trash-alt" title='Delete'></i>
+			</h4>
+			
+			
+			
+		</div>
+
+	</div>
+	
+  </body>
+</html>
